@@ -11,4 +11,15 @@ class CacheEntryDecorator extends BaseCacheDecorator implements EntryRepository
         $this->entityName = 'entry.entries';
         $this->repository = $entry;
     }
+
+    public function allActive()
+    {
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.allActive", $this->cacheTime,
+                function () {
+                    return $this->repository->allActive();
+                }
+            );
+    }
 }

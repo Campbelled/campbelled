@@ -17,6 +17,6 @@ class EntriesComposer
 
     public function compose(View $view)
     {
-        $view->with('entries', $this->entryRepository->all());
+        $view->with('entries', $this->entryRepository->allActive());
     }
 }

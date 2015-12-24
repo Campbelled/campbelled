@@ -4,4 +4,5 @@ use Modules\Core\Repositories\BaseRepository;
 
 interface EntryRepository extends BaseRepository
 {
+    public function allActive();
 }
