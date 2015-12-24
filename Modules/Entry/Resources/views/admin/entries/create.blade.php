@@ -24,6 +24,7 @@
                 <div class="tab-content">
                     {!! Form::normalCheckbox('is_active', 'Is active', $errors) !!}
                     {!! Form::normalInput('url', 'URL', $errors) !!}
+                    {!! Form::normalInput('repository', 'Repository', $errors) !!}
 
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary btn-flat">{{ trans('core::core.button.create') }}</button>

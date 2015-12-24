@@ -24,6 +24,7 @@
                 <div class="tab-content">
                     {!! Form::normalCheckbox('is_active', 'Is active', $errors, $entry) !!}
                     {!! Form::normalInput('url', 'URL', $errors, $entry) !!}
+                    {!! Form::normalInput('repository', 'Repository', $errors, $entry) !!}
                     @include('media::admin.fields.file-link', [
                         'entityClass' => 'Modules\\\\Entry\\\\Entities\\\\Entry',
                         'entityId' => $entry->id,

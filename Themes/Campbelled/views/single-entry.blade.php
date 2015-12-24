@@ -8,7 +8,6 @@
     </style>
 @stop
 @section('content')
-<?php foreach ($entries as $entry): ?>
     <article class="post" id="entry-{{ $entry->id }}">
         <header>
             <div class="title">
@@ -17,7 +16,7 @@
         </header>
         <a href="{{ $entry->url }}" class="image featured" target="_blank">
             <?php if ($image = $entry->files->first()): ?>
-                <img src="{{ $image->path }}" alt=""/>
+            <img src="{{ $image->path }}" alt=""/>
             <?php endif; ?>
         </a>
         <footer>
@@ -37,7 +36,6 @@
             </ul>
         </footer>
     </article>
-<?php endforeach; ?>
 @stop
 
 @section('scripts')
@@ -50,7 +48,7 @@
             $('.jsLikeEntry').on('click', function (e) {
                 e.preventDefault();
                 var entryId = $(this).data('id'),
-                    self = this;
+                        self = this;
                 $.ajax({
                     type: 'POST',
                     url: '{{ route('entry.like') }}',
