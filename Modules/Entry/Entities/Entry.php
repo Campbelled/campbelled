@@ -18,7 +18,7 @@ class Entry extends Model
     /**
      * @return bool
      */
-    public function isLiked() :\bool
+    public function isLiked()
     {
         $ip = request()->ip();
         if ($this->likes()->whereIpAddress($ip)->whereEntryId($this->id)->first()) {
@@ -31,7 +31,7 @@ class Entry extends Model
      * @param string $ip
      * @return integer
      */
-    public function incrementLikesForIp(string $ip) :\integer
+    public function incrementLikesForIp(string $ip)
     {
         if ($like = $this->likes()->whereIpAddress($ip)->whereEntryId($this->id)->first()) {
             $like->delete();
