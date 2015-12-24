@@ -2,7 +2,7 @@
 
 @section('content')
 <?php foreach ($entries as $entry): ?>
-    <article class="post">
+    <article class="post" id="entry-{{ $entry->id }}">
         <a href="{{ $entry->url }}" class="image featured" target="_blank">
             <img src="{{ $entry->files->first()->path }}" alt=""/>
         </a>
@@ -10,7 +10,11 @@
             <ul class="actions">
             </ul>
             <ul class="stats">
-                <li><a href="#entry-{{ $entry->id }}">{{ $entry->created_at->format('M d, Y') }}</a></li>
+                <li>
+                    <a href="#entry-{{ $entry->id }}">
+                        {{ $entry->created_at->format('M d, Y') }}
+                    </a>
+                </li>
                 <li style="display:none;">
                     <a href="#" class="icon fa-heart jsLikeEntry" data-id="{{ $entry->id }}">
                         {{ $entry->likes }}
@@ -25,6 +29,10 @@
 @section('scripts')
     <script>
         $( document ).ready(function() {
+            $.localScroll({
+                target: 'body',
+                hash: true
+            });
             $('.jsLikeEntry').on('click', function (e) {
                 e.preventDefault();
                 var entryId = $(this).data('id');

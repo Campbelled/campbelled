@@ -98,6 +98,8 @@
 {!! Theme::script('js/jquery.min.js') !!}
 {!! Theme::script('js/skel.min.js') !!}
 {!! Theme::script('js/util.js') !!}
+{!! Theme::script('js/jquery.scrollTo.min.js') !!}
+{!! Theme::script('js/jquery.localScroll.min.js') !!}
 <!--[if lte IE 8]>{!! Theme::script('js/ie/respond.min.js') !!}<![endif]-->
 {!! Theme::script('js/main.js') !!}
 @yield('scripts')
