@@ -9,10 +9,4 @@ class Entry extends Model
 
     protected $table = 'entry__entries';
     protected $fillable = ['is_active', 'url'];
-
-    public function incrementLikes()
-    {
-        $this->likes++;
-        $this->save();
-    }
 }
