@@ -7,6 +7,6 @@ class EloquentEntryRepository extends EloquentBaseRepository implements EntryRep
 {
     public function allActive()
     {
-        return $this->model->where('is_active', 1)->get();
+        return $this->model->where('is_active', 1)->orderBy('created_at', 'desc')->get();
     }
 }
