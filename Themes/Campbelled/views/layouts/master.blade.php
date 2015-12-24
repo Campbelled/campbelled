@@ -23,11 +23,15 @@
     <link rel="icon" type="image/png" href="/android-chrome-192x192.png" sizes="192x192">
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
     <meta name="theme-color" content="#ffffff">
+
+    <meta property="og:title" content="You Have Been Campbelled" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://campbelled.club" />
+    <meta property="og:description" content="This site regroups all friendly comments from Graham Campbell" />
     <!--[if lte IE 8]>{!! Theme::script('js/ie/html5shiv.js') !!}<![endif]-->
     {!! Theme::style('css/main.css') !!}
     <!--[if lte IE 9]>{!! Theme::style('css/ie9.css') !!}<![endif]-->
