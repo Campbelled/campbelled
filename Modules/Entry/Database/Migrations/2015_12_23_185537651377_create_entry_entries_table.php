@@ -17,6 +17,7 @@ class CreateEntryEntriesTable extends Migration
             $table->increments('id');
             $table->boolean('is_active')->default(true);
 			$table->string('url');
+			$table->integer('likes');
             $table->timestamps();
 		});
 	}
