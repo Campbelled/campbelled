@@ -4,7 +4,9 @@
 <?php foreach ($entries as $entry): ?>
     <article class="post" id="entry-{{ $entry->id }}">
         <a href="{{ $entry->url }}" class="image featured" target="_blank">
-            <img src="{{ $entry->files->first()->path }}" alt=""/>
+            <?php if ($image = $entry->files->first()): ?>
+                <img src="{{ $image->path }}" alt=""/>
+            <?php endif; ?>
         </a>
         <footer>
             <ul class="actions">
