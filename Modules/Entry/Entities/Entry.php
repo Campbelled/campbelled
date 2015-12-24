@@ -8,10 +8,7 @@ class Entry extends Model
     use MediaRelation;
 
     protected $table = 'entry__entries';
-    protected $fillable = ['is_active', 'url', 'likes'];
-    protected $casts = [
-        'likes' => 'int',
-    ];
+    protected $fillable = ['is_active', 'url'];
 
     public function incrementLikes()
     {
