@@ -41,7 +41,7 @@
 <body>
 <div id="wrapper">
     <header id="header">
-        <h1><a href="#">{{ setting('core::site-name') }}</a></h1>
+        <h1><a href="{{ route('homepage') }}">{{ setting('core::site-name') }}</a></h1>
         <nav class="links">
             <ul>
             </ul>
