@@ -19,6 +19,7 @@ class EntryController extends Controller
     public function like(Request $request)
     {
         $entry = $this->entry->find($request->get('entryId'));
-        $entry->incrementLikes();
+
+        return response()->json($entry->incrementLikesForIp($request->ip()));
     }
 }
