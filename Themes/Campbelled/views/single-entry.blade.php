@@ -1,5 +1,7 @@
 @extends('layouts.master')
-
+@section('meta')
+    <meta property="og:image" content="{{ asset($entry->files->first()->path) }}"/>
+@stop
 @section('styles')
     <style>
         .jsLikeEntry.liked {

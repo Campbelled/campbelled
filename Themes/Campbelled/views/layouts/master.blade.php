@@ -32,6 +32,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://campbelled.club" />
     <meta property="og:description" content="This site regroups all friendly comments from Graham Campbell" />
+    @section('meta')
+    @show
     <!--[if lte IE 8]>{!! Theme::script('js/ie/html5shiv.js') !!}<![endif]-->
     {!! Theme::style('css/main.css') !!}
     <!--[if lte IE 9]>{!! Theme::style('css/ie9.css') !!}<![endif]-->
