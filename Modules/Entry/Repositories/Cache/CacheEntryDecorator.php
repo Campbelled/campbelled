@@ -22,4 +22,15 @@ class CacheEntryDecorator extends BaseCacheDecorator implements EntryRepository
                 }
             );
     }
+
+    public function mostPopular($amount)
+    {
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.mostPopular.$amount", $this->cacheTime,
+                function () use ($amount) {
+                    return $this->repository->mostPopular($amount);
+                }
+            );
+    }
 }

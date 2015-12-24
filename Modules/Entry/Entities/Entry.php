@@ -9,6 +9,7 @@ class Entry extends Model
 
     protected $table = 'entry__entries';
     protected $fillable = ['is_active', 'url', 'repository'];
+    protected $with = ['likes', 'files'];
 
     public function likes()
     {
@@ -35,13 +36,27 @@ class Entry extends Model
     {
         if ($like = $this->likes()->whereIpAddress($ip)->whereEntryId($this->id)->first()) {
             $like->delete();
+            $this->decrementTotalLikes();
             return $this->likes()->count();
         }
         $this->likes()->create([
             'entry_id' => $this->id,
             'ip_address' => $ip,
         ]);
+        $this->incrementTotalLikes();
 
         return $this->likes()->count();
+    }
+
+    private function incrementTotalLikes()
+    {
+        $this->total_likes++;
+        $this->save();
+    }
+
+    private function decrementTotalLikes()
+    {
+        $this->total_likes--;
+        $this->save();
     }
 }

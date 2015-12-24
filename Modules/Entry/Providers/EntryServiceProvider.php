@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Entry\Composers\EntriesComposer;
+use Modules\Entry\Composers\PopularEntriesComposer;
 
 class EntryServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,7 @@ class EntryServiceProvider extends ServiceProvider
     {
         $this->registerBindings();
         view()->composer('default', EntriesComposer::class);
+        view()->composer('partials.sidebar', PopularEntriesComposer::class);
     }
 
     /**

@@ -1,9 +1,28 @@
-<section id="sidebar">
+<section id="sidebar" xmlns="http://www.w3.org/1999/html">
     <section id="intro">
         <header>
             <h2>{{ setting('core::site-name') }}</h2>
             <p>This site re-groups all friendly comments from Graham Campbell.</p>
         </header>
+    </section>
+    <section>
+        <div class="mini-posts">
+            <h2>Popular</h2>
+            <?php foreach ($popularEntries as $popularEntry): ?>
+                <article class="mini-post">
+                    <header style="position: relative;">
+                        <time class="published"> {{ $popularEntry->created_at->format('M d, Y') }}</time>
+                        <a href="#" class="jsLikeEntry {{ $popularEntry->isLiked() ? 'liked' : '' }}" data-id="{{ $popularEntry->id }}"
+                           style="position:absolute; top: 10px; right: 30px; font-size: .7em">
+                            <i class="fa fa-heart"></i> {{ $popularEntry->likes->count() }}
+                        </a>
+                    </header>
+                    <?php if ($image = $popularEntry->files->first()): ?>
+                    <a href="{{ route('entry.show', $popularEntry->id) }}" class="image"><img src="{{ $image->path }}" alt="" /></a>
+                    <?php endif; ?>
+                </article>
+            <?php endforeach; ?>
+        </div>
     </section>
     <section class="blurb">
         <h2>About</h2>
