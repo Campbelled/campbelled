@@ -14,4 +14,34 @@ class Entry extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    /**
+     * @return bool
+     */
+    public function isLiked() :bool
+    {
+        $ip = request()->ip();
+        if ($this->likes()->whereIpAddress($ip)->whereEntryId($this->id)->first()) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $ip
+     * @return integer
+     */
+    public function incrementLikesForIp(string $ip) :integer
+    {
+        if ($like = $this->likes()->whereIpAddress($ip)->whereEntryId($this->id)->first()) {
+            $like->delete();
+            return $this->likes()->count();
+        }
+        $this->likes()->create([
+            'entry_id' => $this->id,
+            'ip_address' => $ip,
+        ]);
+
+        return $this->likes()->count();
+    }
 }
