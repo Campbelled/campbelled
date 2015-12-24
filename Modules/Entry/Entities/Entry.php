@@ -9,4 +9,9 @@ class Entry extends Model
 
     protected $table = 'entry__entries';
     protected $fillable = ['is_active', 'url'];
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
 }
