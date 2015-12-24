@@ -7,6 +7,7 @@
 <html>
 <head>
     <title>You Have Been Campbelled</title>
+    <meta name="description" content="{{ setting('core::site-description') }}" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
@@ -103,5 +104,8 @@
 <!--[if lte IE 8]>{!! Theme::script('js/ie/respond.min.js') !!}<![endif]-->
 {!! Theme::script('js/main.js') !!}
 @yield('scripts')
+<?php if (Setting::has('core::google-analytics') && App::environment() !== 'local'): ?>
+{!! setting('core::google-analytics') !!}
+<?php endif; ?>
 </body>
 </html>
