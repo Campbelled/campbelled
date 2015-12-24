@@ -10,7 +10,7 @@
             <ul class="actions">
             </ul>
             <ul class="stats">
-                <li>{{ $entry->created_at->format('M d, Y') }}</li>
+                <li><a href="#entry-{{ $entry->id }}">{{ $entry->created_at->format('M d, Y') }}</a></li>
                 <li style="display:none;">
                     <a href="#" class="icon fa-heart jsLikeEntry" data-id="{{ $entry->id }}">
                         {{ $entry->likes }}
