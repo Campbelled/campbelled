@@ -36,6 +36,7 @@
     {!! Theme::style('css/main.css') !!}
     <!--[if lte IE 9]>{!! Theme::style('css/ie9.css') !!}<![endif]-->
     <!--[if lte IE 8]>{!! Theme::style('css/ie8.css') !!}<![endif]-->
+    @yield('styles')
 </head>
 <body>
 <div id="wrapper">
