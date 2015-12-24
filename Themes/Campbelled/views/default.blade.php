@@ -1,5 +1,12 @@
 @extends('layouts.master')
 
+@section('styles')
+    <style>
+        .jsLikeEntry.liked {
+            color: red;
+        }
+    </style>
+@stop
 @section('content')
 <?php foreach ($entries as $entry): ?>
     <article class="post" id="entry-{{ $entry->id }}">
@@ -17,9 +24,9 @@
                         {{ $entry->created_at->format('M d, Y') }}
                     </a>
                 </li>
-                <li style="display:none;">
-                    <a href="#" class="icon fa-heart jsLikeEntry" data-id="{{ $entry->id }}">
-                        {{ $entry->likes }}
+                <li>
+                    <a href="#" class="jsLikeEntry {{ $entry->isLiked() ? 'liked' : ''}}" data-id="{{ $entry->id }}">
+                        <i class="fa fa-heart"></i> {{ $entry->likes->count() }}
                     </a>
                 </li>
             </ul>
@@ -37,7 +44,8 @@
             });
             $('.jsLikeEntry').on('click', function (e) {
                 e.preventDefault();
-                var entryId = $(this).data('id');
+                var entryId = $(this).data('id'),
+                    self = this;
                 $.ajax({
                     type: 'POST',
                     url: '{{ route('entry.like') }}',
@@ -46,6 +54,8 @@
                         'entryId': entryId
                     },
                     success: function(data) {
+                        $(self).html('<i class="fa fa-heart"></i> ' + data);
+                        $(self).toggleClass('liked');
                     }
                 });
             });
