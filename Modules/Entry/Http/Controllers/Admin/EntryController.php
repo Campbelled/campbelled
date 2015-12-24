@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Modules\Entry\Entities\Entry;
 use Modules\Entry\Repositories\EntryRepository;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Media\Repositories\FileRepository;
 
 class EntryController extends AdminBaseController
 {
@@ -59,13 +60,15 @@ class EntryController extends AdminBaseController
 
     /**
      * Show the form for editing the specified resource.
-     *
      * @param  Entry $entry
+     * @param FileRepository $fileRepository
      * @return Response
      */
-    public function edit(Entry $entry)
+    public function edit(Entry $entry, FileRepository $fileRepository)
     {
-        return view('entry::admin.entries.edit', compact('entry'));
+        $image = $fileRepository->findFileByZoneForEntity('image', $entry);
+
+        return view('entry::admin.entries.edit', compact('entry', 'image'));
     }
 
     /**
